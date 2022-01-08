@@ -49,6 +49,12 @@ def main():
         utility.Twwet("私はyoutube晒しBot。こいつが見ている動画を晒します。\n" + title + "\n"+ url +"\n")
         print("ツイートしました")
         url_list = url_list + "," + url
+        url_list = url_list.split(",")
+        if len(url_list) > 24:
+            print("このURLは再度投稿されるようになります:" + url_list[0])
+            url_list = url_list[1:]
+        url_list = ','.join(url_list)
+        
         with open('data/data.txt','w') as f:
             f.write(url_list)
         
